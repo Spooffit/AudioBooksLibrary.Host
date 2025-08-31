@@ -6,4 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\AudioBooksLibrary.Application.Abstractions\AudioBooksLibrary.Application.Abstractions.csproj" />
+      <ProjectReference Include="..\AudioBooksLibrary.Core\AudioBooksLibrary.Core.csproj" />
+    </ItemGroup>
+
 </Project>
