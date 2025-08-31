@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AC2FCEB1-CAD7-4130-9C58-588DAFE30D13}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C61C19A4-DD82-4D11-9982-CF88C606F3B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioBooksLibrary.Core", "src\AudioBooksLibrary.Core\AudioBooksLibrary.Core.csproj", "{2C56415A-7950-40F0-A9A6-C2D30030C6B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioBooksLibrary.Application", "src\AudioBooksLibrary.Application\AudioBooksLibrary.Application.csproj", "{95F1DA5D-5CC5-41A2-9B7B-4F9FA8BDB389}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioBooksLibrary.Application.Abstractions", "src\AudioBooksLibrary.Application.Abstractions\AudioBooksLibrary.Application.Abstractions.csproj", "{AD71F19F-3E13-4697-B4C1-D75875D9F91B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioBooksLibrary.Infrastructure", "src\AudioBooksLibrary.Infrastructure\AudioBooksLibrary.Infrastructure.csproj", "{370FEC82-CD8D-4774-8EA2-EB1DCD70BA80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioBooksLibrary.Tests.Architecture", "tests\AudioBooksLibrary.Tests.Architecture\AudioBooksLibrary.Tests.Architecture.csproj", "{2E251BEF-ED9E-4FE7-B586-80BC5ADCDDA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioBooksLibrary.Api", "src\AudioBooksLibrary.Api\AudioBooksLibrary.Api.csproj", "{7DAC9CB2-F6FB-45BD-AA45-82CEFE8162E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2C56415A-7950-40F0-A9A6-C2D30030C6B5} = {AC2FCEB1-CAD7-4130-9C58-588DAFE30D13}
+		{95F1DA5D-5CC5-41A2-9B7B-4F9FA8BDB389} = {AC2FCEB1-CAD7-4130-9C58-588DAFE30D13}
+		{AD71F19F-3E13-4697-B4C1-D75875D9F91B} = {AC2FCEB1-CAD7-4130-9C58-588DAFE30D13}
+		{370FEC82-CD8D-4774-8EA2-EB1DCD70BA80} = {AC2FCEB1-CAD7-4130-9C58-588DAFE30D13}
+		{2E251BEF-ED9E-4FE7-B586-80BC5ADCDDA3} = {C61C19A4-DD82-4D11-9982-CF88C606F3B8}
+		{7DAC9CB2-F6FB-45BD-AA45-82CEFE8162E8} = {AC2FCEB1-CAD7-4130-9C58-588DAFE30D13}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C56415A-7950-40F0-A9A6-C2D30030C6B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C56415A-7950-40F0-A9A6-C2D30030C6B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C56415A-7950-40F0-A9A6-C2D30030C6B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C56415A-7950-40F0-A9A6-C2D30030C6B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95F1DA5D-5CC5-41A2-9B7B-4F9FA8BDB389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95F1DA5D-5CC5-41A2-9B7B-4F9FA8BDB389}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95F1DA5D-5CC5-41A2-9B7B-4F9FA8BDB389}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95F1DA5D-5CC5-41A2-9B7B-4F9FA8BDB389}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD71F19F-3E13-4697-B4C1-D75875D9F91B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD71F19F-3E13-4697-B4C1-D75875D9F91B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD71F19F-3E13-4697-B4C1-D75875D9F91B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD71F19F-3E13-4697-B4C1-D75875D9F91B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{370FEC82-CD8D-4774-8EA2-EB1DCD70BA80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{370FEC82-CD8D-4774-8EA2-EB1DCD70BA80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{370FEC82-CD8D-4774-8EA2-EB1DCD70BA80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{370FEC82-CD8D-4774-8EA2-EB1DCD70BA80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E251BEF-ED9E-4FE7-B586-80BC5ADCDDA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E251BEF-ED9E-4FE7-B586-80BC5ADCDDA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E251BEF-ED9E-4FE7-B586-80BC5ADCDDA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E251BEF-ED9E-4FE7-B586-80BC5ADCDDA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DAC9CB2-F6FB-45BD-AA45-82CEFE8162E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DAC9CB2-F6FB-45BD-AA45-82CEFE8162E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DAC9CB2-F6FB-45BD-AA45-82CEFE8162E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DAC9CB2-F6FB-45BD-AA45-82CEFE8162E8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
