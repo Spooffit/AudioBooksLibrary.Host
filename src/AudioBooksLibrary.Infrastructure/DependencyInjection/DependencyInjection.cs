@@ -1,6 +1,5 @@
 ﻿using AudioBooksLibrary.Core.Repositories;
 using AudioBooksLibrary.Infrastructure.HostedServices;
-using AudioBooksLibrary.Infrastructure.Persistence;
 using AudioBooksLibrary.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -17,9 +16,13 @@ public static class DependencyInjection
 
         services.AddDbContext<AppDbContext>(opt =>
         {
-            opt.UseNpgsql(conn, npg => npg.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName));
+            opt.UseNpgsql(
+                    conn,
+                    b => b.MigrationsHistoryTable("__EFMigrationsHistory"))
+                .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking)
+                .UseSnakeCaseNamingConvention();
         });
-
+        
         // Репозитории
         services.AddScoped<IAudiobookRepository, AudiobookRepository>();
         services.AddScoped<IAudiobookPartRepository, AudiobookPartRepository>();
@@ -29,6 +32,7 @@ public static class DependencyInjection
 
         // Индексация файлов (хост-сервис)
         services.AddHostedService<LibraryIndexHostedServices>();
+        services.AddHostedService<DbMigratorHostedService<AppDbContext>>();
 
         return services;
     }

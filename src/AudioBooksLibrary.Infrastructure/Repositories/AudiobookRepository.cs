@@ -1,6 +1,5 @@
 ﻿using AudioBooksLibrary.Core.Entities;
 using AudioBooksLibrary.Core.Repositories;
-using AudioBooksLibrary.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace AudioBooksLibrary.Infrastructure.Repositories;

@@ -1,5 +1,4 @@
 ﻿using AudioBooksLibrary.Core.Repositories;
-using AudioBooksLibrary.Infrastructure.Persistence;
 
 namespace AudioBooksLibrary.Infrastructure.Repositories;
 

@@ -5,18 +5,19 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-// builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen();
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
-// app.UseSwagger();
-// app.UseSwaggerUI();
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.MapControllers();
 
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/", () => Results.Redirect("/swagger/index.html"))
+    .ExcludeFromDescription();
 
 app.Run();

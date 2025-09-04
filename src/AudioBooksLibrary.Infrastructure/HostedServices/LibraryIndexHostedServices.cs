@@ -3,20 +3,30 @@ using System.Text;
 using AudioBooksLibrary.Core.Entities;
 using AudioBooksLibrary.Core.Repositories;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace AudioBooksLibrary.Infrastructure.HostedServices;
 
 public class LibraryIndexHostedServices(
-    ILogger<LibraryIndexHostedServices> logger,
-    IConfiguration config,
-    IAudiobookRepository bookRepo,
-    IAudiobookPartRepository partRepo,
-    IUnitOfWork uow) : BackgroundService
+    IServiceScopeFactory serviceScopeFactory) : BackgroundService
 {
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
+        await IndexLibraryContents(serviceScopeFactory, stoppingToken);
+    }
+
+    private static async Task IndexLibraryContents(IServiceScopeFactory serviceScopeFactory,
+        CancellationToken stoppingToken)
+    {
+        using var scope = serviceScopeFactory.CreateScope();
+        var logger = scope.ServiceProvider.GetRequiredService<ILogger<LibraryIndexHostedServices>>();
+        var config = scope.ServiceProvider.GetRequiredService<IConfiguration>();
+        var bookRepo = scope.ServiceProvider.GetRequiredService<IAudiobookRepository>();
+        var partRepo = scope.ServiceProvider.GetRequiredService<IAudiobookPartRepository>();
+        var uow = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
+
         var root = config["Library:RootPath"];
         if (string.IsNullOrWhiteSpace(root) || !Directory.Exists(root))
         {
@@ -32,7 +42,6 @@ public class LibraryIndexHostedServices(
             if (stoppingToken.IsCancellationRequested) break;
             var title = Path.GetFileName(dir);
             if (!await bookRepo.ExistsByTitleAsync(title, stoppingToken))
-            {
                 await bookRepo.AddAsync(new Audiobook
                 {
                     Id = Guid.NewGuid(),
@@ -40,13 +49,12 @@ public class LibraryIndexHostedServices(
                     AuthorsLine = "", // можно парсить метаданные позже
                     Description = null
                 }, stoppingToken);
-            }
             await uow.SaveChangesAsync(stoppingToken);
 
             // Получим книгу
             var book = (await bookRepo.ListAsync(0, 1, stoppingToken))
-                .FirstOrDefault(b => b.Title == title) 
-                ?? throw new InvalidOperationException("Book should exist");
+                       .FirstOrDefault(b => b.Title == title)
+                       ?? throw new InvalidOperationException("Book should exist");
 
             var files = Directory.GetFiles(dir)
                 .Where(f => IsAudio(f))
@@ -76,8 +84,10 @@ public class LibraryIndexHostedServices(
                 };
                 await partRepo.AddAsync(part, stoppingToken);
             }
+
             await uow.SaveChangesAsync(stoppingToken);
         }
+
         logger.LogInformation("Library indexing finished.");
     }
 

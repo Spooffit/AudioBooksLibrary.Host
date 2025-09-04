@@ -13,8 +13,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<IAudiobookService, AudiobookService>();
         services.AddScoped<IPlaybackService, PlaybackService>();
         services.AddScoped<IMarkerService, MarkerService>();
-        return services;
-
+        
         return services;
     }
 }
